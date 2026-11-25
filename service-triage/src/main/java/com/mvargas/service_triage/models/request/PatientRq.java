@@ -1,5 +1,6 @@
 package com.mvargas.service_triage.models.request;
 
+import com.mvargas.service_triage.validations.ValidBloodPressure;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ValidBloodPressure
 public class PatientRq {
 
     @NotBlank(message = "FulName is required")
