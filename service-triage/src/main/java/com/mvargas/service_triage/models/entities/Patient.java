@@ -1,0 +1,50 @@
+package com.mvargas.service_triage.models.entities;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+
+import java.math.BigDecimal;
+
+@Data
+@Table(name = "patient")
+@NoArgsConstructor
+@AllArgsConstructor
+public class Patient {
+
+    @Id
+    private Long id;
+
+    @Column(value = "full_name")
+    private String fullName;
+
+    @Column(value = "age")
+    private Integer age;
+
+    @Column(value = "heart_rate")
+    private Integer heartRate;
+
+    @Column(value = "systolic_pressure")
+    private Integer systolicPressure;
+
+    @Column(value = "diastolic_pressure")
+    private Integer diastolicPressure;
+
+    @Column(value = "sp_o_two")
+    private Integer spOTwo;
+
+    @Column(value = "temperature")
+    private BigDecimal temperature;
+
+    @Column(value = "ache")
+    private Integer ache;
+
+    @Column(value = "gcs")
+    private Integer gcs;
+
+    @Column(value = "description")
+    private String description;
+}

@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: service-triage
+  r2dbc:
+    url: 'r2dbc:postgresql://localhost:5432/vidacruz'
+    username: admin
+    password: mvargas
+    pool:
+      enabled: true
+      initial-size: 15
+      max-size: 30
+      max-life-time: 180000ms
+      max-idle-time: 100000ms
+      max-create-connection-time: 10000ms
+      validation-depth: local
+      validation-query: SELECT 1
