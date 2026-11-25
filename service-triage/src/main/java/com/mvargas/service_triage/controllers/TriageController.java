@@ -1,10 +1,13 @@
 package com.mvargas.service_triage.controllers;
 
+import com.mvargas.service_triage.models.request.PatientRq;
 import com.mvargas.service_triage.models.response.PatientRs;
 import com.mvargas.service_triage.services.TriageService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
@@ -17,8 +20,8 @@ public class TriageController {
     private final TriageService service;
 
     @PostMapping(path = "pacientes")
-    public Mono<ResponseEntity<PatientRs>> addPatient() {
-        return service.addPatientInformation()
+    public Mono<ResponseEntity<PatientRs>> addPatient(@Valid @RequestBody final PatientRq request) {
+        return service.addPatientInformation(request)
                 .map(ResponseEntity::ok);
     }
 }

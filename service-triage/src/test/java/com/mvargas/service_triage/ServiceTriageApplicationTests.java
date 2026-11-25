@@ -1,10 +1,10 @@
-package com.mvargas.crud_reactive;
+package com.mvargas.service_triage;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CrudReactiveApplicationTests {
+class ServiceTriageApplicationTests {
 
 	@Test
 	void contextLoads() {

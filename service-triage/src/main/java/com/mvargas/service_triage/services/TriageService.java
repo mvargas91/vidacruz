@@ -1,5 +1,6 @@
 package com.mvargas.service_triage.services;
 
+import com.mvargas.service_triage.models.request.PatientRq;
 import com.mvargas.service_triage.models.response.PatientRs;
 import com.mvargas.service_triage.mappers.PatientMapper;
 import com.mvargas.service_triage.repositories.PatientRepository;
@@ -16,7 +17,7 @@ public class TriageService {
     private final PatientRepository repository;
     private final PatientMapper mapper;
 
-    public Mono<PatientRs> addPatientInformation(){
+    public Mono<PatientRs> addPatientInformation(final PatientRq request){
         log.info("add information of the patient");
         return Mono.just(PatientRs.builder().build());
     }
