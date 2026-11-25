@@ -2,17 +2,11 @@ package com.mvargas.service_triage.models.request;
 
 import com.mvargas.service_triage.validations.ValidBloodPressure;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @ValidBloodPressure
 public class PatientRq {
 
@@ -61,6 +55,5 @@ public class PatientRq {
     @Max(value = 15, message = "GCS Pressure size cannot exceed 15")
     private Integer gcs;
 
-    //@NotBlank(message = "description is required")
     private String description;
 }

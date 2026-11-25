@@ -16,6 +16,7 @@ public class TriageService {
 
     private final PatientRepository repository;
     private final PatientMapper mapper;
+    private final SlaLevelService slaLevel;
 
     public Mono<PatientRs> addPatientInformation(final PatientRq request){
         log.info("add information of the patient");
