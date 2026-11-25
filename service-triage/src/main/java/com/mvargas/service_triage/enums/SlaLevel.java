@@ -1,5 +1,8 @@
 package com.mvargas.service_triage.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum SlaLevel {
 
     CRITICO("CRITICO", 5),
@@ -14,22 +17,5 @@ public enum SlaLevel {
     SlaLevel(String level, int minutes) {
         this.level = level;
         this.minutes = minutes;
-    }
-
-    public String getLevel() {
-        return level;
-    }
-
-    public int getMinutes() {
-        return minutes;
-    }
-
-    public static SlaLevel fromLevel(String level) {
-        for (SlaLevel triage : values()) {
-            if (triage.level.equalsIgnoreCase(level)) {
-                return triage;
-            }
-        }
-        throw new IllegalArgumentException("Invalid SLA level: " + level);
     }
 }

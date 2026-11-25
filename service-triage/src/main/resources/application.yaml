@@ -14,3 +14,7 @@ spring:
       max-create-connection-time: 10000ms
       validation-depth: local
       validation-query: SELECT 1
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false

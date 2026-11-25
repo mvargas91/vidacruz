@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Component
 @Order(4)
-public class NoUrgentTwoRule implements TriageRule {
+public class NoUrgentTwoRule implements SlaRule {
 
     private static final Set<String> ADMINISTRATIVE_COMPLAINTS = Set.of(
             "renovacion de formula medica",

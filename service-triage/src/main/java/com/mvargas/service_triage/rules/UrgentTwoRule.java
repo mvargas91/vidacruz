@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Component
 @Order(3)
-public class UrgentTwoRule implements TriageRule {
+public class UrgentTwoRule implements SlaRule {
 
     private static final BigDecimal FEVER_LOW = new BigDecimal("38.0");
     private static final BigDecimal FEVER_HIGH = new BigDecimal("38.5");

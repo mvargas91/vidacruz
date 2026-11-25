@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Component
 @Order(1)
-public class CriticRule implements TriageRule {
+public class CriticRule implements SlaRule {
     @Override
     public Optional<SlaLevel> evaluate(final PatientRq request) {
         boolean match = request.getHeartRate() < 40

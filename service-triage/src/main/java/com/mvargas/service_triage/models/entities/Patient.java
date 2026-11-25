@@ -1,5 +1,7 @@
 package com.mvargas.service_triage.models.entities;
 
+import com.mvargas.service_triage.enums.PatientStatus;
+import com.mvargas.service_triage.enums.SlaLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +10,7 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Data
 @Table(name = "patient")
@@ -47,4 +50,13 @@ public class Patient {
 
     @Column(value = "description")
     private String description;
+
+    @Column(value = "sla_level")
+    private SlaLevel slaLevel;
+
+    @Column(value = "patient_status")
+    private PatientStatus patientStatus;
+
+    @Column(value = "registration_date")
+    private LocalDateTime registrationDate;
 }
