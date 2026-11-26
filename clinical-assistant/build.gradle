@@ -1,0 +1,57 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '4.2.0'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+ext {
+	set('springCloudVersion', '2025.1.2')
+}
+
+group = 'com.mvargas'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(25)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.cloud:spring-cloud-starter-stream-kafka'
+
+	// Lombok + mapstruct
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+	implementation 'org.mapstruct:mapstruct:1.6.3'
+	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
+
+	//R2DBC
+	implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+	testImplementation 'org.springframework.boot:spring-boot-starter-data-r2dbc-test'
+	runtimeOnly 'org.postgresql:r2dbc-postgresql'
+	runtimeOnly 'io.r2dbc:r2dbc-pool'
+
+	// UnitTest
+	testImplementation 'org.springframework.boot:spring-boot-starter-webflux-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
