@@ -6,5 +6,5 @@ import lombok.Getter;
 public enum PatientStatus {
     REGISTRADO,
     EN_CONSULTA,
-    ALTA;
+    ALTA
 }

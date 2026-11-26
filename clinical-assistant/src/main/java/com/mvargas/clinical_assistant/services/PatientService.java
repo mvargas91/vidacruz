@@ -1,9 +1,13 @@
 package com.mvargas.clinical_assistant.services;
 
+import com.mvargas.clinical_assistant.enums.PatientStatus;
 import com.mvargas.clinical_assistant.exceptions.PatientAlreadyExistsException;
 import com.mvargas.clinical_assistant.exceptions.PatientNotFoundException;
 import com.mvargas.clinical_assistant.exceptions.PatientServiceException;
+import com.mvargas.clinical_assistant.exceptions.PatientStatusConflictException;
 import com.mvargas.clinical_assistant.mappers.PatientMapper;
+import com.mvargas.clinical_assistant.models.entities.Patient;
+import com.mvargas.clinical_assistant.models.request.PatientStatusRq;
 import com.mvargas.clinical_assistant.models.response.PatientRs;
 import com.mvargas.clinical_assistant.repositories.PatientRepository;
 import lombok.AllArgsConstructor;
@@ -25,6 +29,22 @@ public class PatientService {
                 .switchIfEmpty(Mono.error(new PatientNotFoundException(id)))
                 .map(mapper::toResponse)
                 .onErrorMap(this::translate);
+    }
+
+    public Mono<Patient> updatePatientStatus(final Long id,
+                                             final PatientStatus newStatus) {
+        return repository.findById(id)
+                .switchIfEmpty(Mono.error(new PatientNotFoundException(id)))
+                .flatMap(patient -> {
+
+                    final var currentStatus = patient.getPatientStatus();
+                    if (!currentStatus.canTransitionTo(newStatus)) {
+                        return Mono.error(new PatientStatusConflictException(currentStatus, newStatus));
+                    }
+
+                    patient.setPatientStatus(newStatus);
+                    return repository.save(patient);
+                });
     }
 
     private Throwable translate(final Throwable e) {
