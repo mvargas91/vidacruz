@@ -1,10 +1,12 @@
 package com.mvargas.service_triage.services;
 
 import com.mvargas.service_triage.enums.PatientStatus;
+import com.mvargas.service_triage.mappers.PatientMapper;
 import com.mvargas.service_triage.models.entities.Patient;
+import com.mvargas.service_triage.models.request.PacienteRegistradoEvent;
 import com.mvargas.service_triage.models.request.PatientRq;
 import com.mvargas.service_triage.models.response.PatientRs;
-import com.mvargas.service_triage.mappers.PatientMapper;
+import com.mvargas.service_triage.outbox.OutboxService;
 import com.mvargas.service_triage.repositories.PatientRepository;
 import io.r2dbc.spi.R2dbcException;
 import lombok.AllArgsConstructor;
@@ -15,17 +17,22 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Mono;
 
+import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
 @Slf4j
 public class TriageService {
 
+    private static final String EVENT_TYPE = "paciente_registrado";
+
     private final PatientRepository repository;
     private final PatientMapper mapper;
     private final SlaLevelService slaLevel;
+    private final OutboxService outboxService;
 
     public Mono<PatientRs> addPatientInformation(final PatientRq request){
         log.info("add information of the patient");
@@ -37,6 +44,19 @@ public class TriageService {
                     return patient;
                 })
                 .flatMap(repository::save)
+                .flatMap(saved -> {
+                    final UUID eventId = UUID.randomUUID();
+                    final PacienteRegistradoEvent event = new PacienteRegistradoEvent(
+                            eventId, EVENT_TYPE, Instant.now(),
+                            saved.getId(),
+                            saved.getSlaLevel().getLevel(),
+                            saved.getSlaLevel().getMinutes(),
+                            saved.getPatientStatus());
+                    return outboxService
+                            .enqueue("PATIENT", String.valueOf(saved.getId()),
+                                    EVENT_TYPE, eventId, event)
+                            .thenReturn(saved);
+                })
                 .map(mapper::toResponse)
                 .onErrorResume(this::handleDbError);
     }
