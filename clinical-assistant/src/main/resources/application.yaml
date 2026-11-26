@@ -18,24 +18,23 @@ spring:
       validation-depth: local
       validation-query: SELECT 1
   cloud:
+    function:
+      definition: triajeEventos
     stream:
-      kafka:
-        binder:
-          brokers: localhost:9092
-          producer-properties:
-            key.serializer: org.apache.kafka.common.serialization.StringSerializer
-            value.serializer: org.apache.kafka.common.serialization.StringSerializer
-            acks: all
-            enable.idempotence: true
-        bindings:
-          triajeEventos-out-0:
-            producer:
-              sync: true # send() espera confirmación de Kafka y falla si no llega
       bindings:
         triajeEventos-out-0:
           destination: triaje.eventos
-          producer:
-            use-native-encoding: true # evita que el JSON (ya en String) se serialice dos veces
-
-outbox:
-  poll-interval-ms: 1000
+          content-type: application/json
+      kafka:
+        binder:
+          brokers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+          required-acks: all
+        bindings:
+          triajeEventos-out-0:
+            producer:
+              message-key-expression: headers['kafka_messageKey']
+              configuration:
+                key.serializer: org.apache.kafka.common.serialization.StringSerializer
+                enable.idempotence: true
+                linger.ms: 5
+                client.id: triage-service

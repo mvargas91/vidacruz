@@ -1,13 +1,14 @@
 package com.mvargas.clinical_assistant.controllers;
 
+import com.mvargas.clinical_assistant.enums.PatientStatus;
+import com.mvargas.clinical_assistant.models.entities.Patient;
+import com.mvargas.clinical_assistant.models.request.PatientStatusRq;
 import com.mvargas.clinical_assistant.models.response.PatientRs;
 import com.mvargas.clinical_assistant.services.PatientService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -20,6 +21,13 @@ public class PatientController {
     @GetMapping(path = "/pacientes/{id}")
     public Mono<ResponseEntity<PatientRs>> addPatient(@PathVariable Long id) {
         return service.getPatientById(id)
+                .map(ResponseEntity::ok);
+    }
+
+    @PatchMapping("/pacientes/{id}/estado")
+    public Mono<ResponseEntity<Patient>> updateStatus(@PathVariable Long id,
+                                                      @Valid @RequestBody PatientStatusRq request) {
+        return service.updatePatientStatus(id, PatientStatus.valueOf(request.status()))
                 .map(ResponseEntity::ok);
     }
 }
