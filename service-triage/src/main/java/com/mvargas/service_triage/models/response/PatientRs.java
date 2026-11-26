@@ -2,11 +2,11 @@ package com.mvargas.service_triage.models.response;
 
 import lombok.Builder;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 @Builder(toBuilder = true)
 public record PatientRs (Long id,
                          String level,
                          String slaMinutes,
-                         Boolean state,
-                         LocalDateTime registrationDate) {}
+                         String state,
+                         OffsetDateTime registrationDate) {}

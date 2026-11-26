@@ -15,6 +15,7 @@ public class NoUrgentTwoRule implements SlaRule {
 
     private static final Set<String> ADMINISTRATIVE_COMPLAINTS = Set.of(
             "renovacion de formula medica",
+            "renovacion de recetario",
             "solicitud de certificado medico",
             "solicitud de incapacidad",
             "reclamo de resultados de laboratorio",

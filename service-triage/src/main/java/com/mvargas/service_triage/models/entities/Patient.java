@@ -10,7 +10,7 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 @Data
 @Table(name = "patient")
@@ -58,5 +58,5 @@ public class Patient {
     private PatientStatus patientStatus;
 
     @Column(value = "registration_date")
-    private LocalDateTime registrationDate;
+    private OffsetDateTime registrationDate;
 }
