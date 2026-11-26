@@ -1,6 +1,17 @@
 server:
   port: 9090
 
+# RF-03: sla and interval are configurable : PT30S, PT2S
+app:
+  triage:
+    evaluation-interval: PT30S      # in test: PT2S
+    sla:
+      CRITICO: PT5M                 # in test: PT10S
+      URGENTE: PT10M
+      URGENTE_2: PT30M
+      NO_URGENTE: PT60M
+      NO_URGENTE_2: PT120M
+
 spring:
   application:
     name: clinical-assistant

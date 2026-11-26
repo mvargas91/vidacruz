@@ -1,4 +1,4 @@
-package com.mvargas.clinical_assistant.services;
+package com.mvargas.clinical_assistant.components;
 
 import com.mvargas.clinical_assistant.models.request.PatientEvent;
 import lombok.extern.slf4j.Slf4j;

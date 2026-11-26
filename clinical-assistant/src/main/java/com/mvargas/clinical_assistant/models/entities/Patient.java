@@ -59,4 +59,10 @@ public class Patient {
 
     @Column(value = "registration_date")
     private OffsetDateTime registrationDate;
+
+    @Column("escalated")
+    private boolean escalated = false;
+
+    @Column("escalated_date")
+    private OffsetDateTime escalatedDate;
 }

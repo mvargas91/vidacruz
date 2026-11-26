@@ -1,5 +1,6 @@
 package com.mvargas.clinical_assistant.services;
 
+import com.mvargas.clinical_assistant.components.PatientEventPublisher;
 import com.mvargas.clinical_assistant.enums.EventType;
 import com.mvargas.clinical_assistant.enums.PatientStatus;
 import com.mvargas.clinical_assistant.exceptions.PatientAlreadyExistsException;

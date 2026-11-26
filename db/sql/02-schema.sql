@@ -14,3 +14,11 @@ ALTER TABLE patient
 ALTER TABLE patient
     ADD CONSTRAINT chk_sla_level
     CHECK (sla_level IN ('CRITICO', 'URGENTE', 'URGENTE_2', 'NO_URGENTE', 'NO_URGENTE_2'));
+
+ALTER TABLE patient
+    ADD COLUMN escalated      BOOLEAN     NOT NULL DEFAULT false,
+    ADD COLUMN escalated_date TIMESTAMPTZ;
+
+CREATE INDEX idx_patient_pending_sla
+    ON patient (registration_date)
+    WHERE patient_status = 'REGISTRADO' AND escalated = false;
