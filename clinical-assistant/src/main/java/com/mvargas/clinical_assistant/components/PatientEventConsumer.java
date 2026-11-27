@@ -5,7 +5,6 @@ import com.mvargas.clinical_assistant.enums.TipoEvento;
 import com.mvargas.clinical_assistant.models.request.PatientEvent;
 import com.mvargas.clinical_assistant.models.response.TriageEvent;
 import com.mvargas.clinical_assistant.services.AssistantService;
-import io.micrometer.core.instrument.MeterRegistry;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +20,6 @@ import java.util.function.Consumer;
 public class PatientEventConsumer {
 
     private final AssistantService assistantService;
-    private final MeterRegistry registry;
 
     @Bean
     public Consumer<Flux<PatientEvent>> eventTriageConsumer() {
@@ -45,7 +43,7 @@ public class PatientEventConsumer {
         ))
         .flatMap(this.assistantService::apply)
         .onErrorResume(throwable -> {
-            log.error(throwable.getMessage(), throwable);
+            log.error("Error processing patient event {} message: {}", patientEvent, throwable.getMessage());
             return Mono.empty();
         });
     }

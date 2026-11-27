@@ -16,7 +16,7 @@ public class SlaEscalationJob {
 
     @Scheduled(fixedDelayString = "${app.triage.evaluation-interval}")
     public Mono<Void> evaluate() {
-        log.error("SLA evaluation started");
+        log.info("SLA evaluation started");
         return service.escalateOverdue()
                 .onErrorResume(e -> {
                     log.error("SLA evaluation failed", e);
