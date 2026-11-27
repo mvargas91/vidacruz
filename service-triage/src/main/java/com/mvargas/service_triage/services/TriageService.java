@@ -3,7 +3,7 @@ package com.mvargas.service_triage.services;
 import com.mvargas.service_triage.enums.PatientStatus;
 import com.mvargas.service_triage.mappers.PatientMapper;
 import com.mvargas.service_triage.models.entities.Patient;
-import com.mvargas.service_triage.models.request.PacienteRegistradoEvent;
+import com.mvargas.service_triage.models.request.PatientEvent;
 import com.mvargas.service_triage.models.request.PatientRq;
 import com.mvargas.service_triage.models.response.PatientRs;
 import com.mvargas.service_triage.outbox.OutboxService;
@@ -46,7 +46,7 @@ public class TriageService {
                 .flatMap(repository::save)
                 .flatMap(saved -> {
                     final UUID eventId = UUID.randomUUID();
-                    final PacienteRegistradoEvent event = new PacienteRegistradoEvent(
+                    final PatientEvent event = new PatientEvent(
                             eventId, EVENT_TYPE, Instant.now(),
                             saved.getId(),
                             saved.getSlaLevel().getLevel(),

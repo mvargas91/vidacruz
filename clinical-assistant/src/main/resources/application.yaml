@@ -28,24 +28,55 @@ spring:
       max-create-connection-time: 10000ms
       validation-depth: local
       validation-query: SELECT 1
+  data:
+    redis:
+      jedis:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+      host: localhost
+      port: 6379
+      password: mvargas
+      connect-timeout: 2000ms
+      username: default
+
   cloud:
     function:
-      definition: triajeEventos
+      definition: eventTriageSupplier;eventTriageConsumer
     stream:
+      # 1. Bindings generales (Aquí se mapea al topic real)
       bindings:
-        triajeEventos-out-0:
+        eventTriageSupplier-out-0:
           destination: triaje.eventos
           content-type: application/json
+        eventTriageConsumer-in-0:
+          destination: triaje.eventos
+          group: grupo-triaje # Obligatorio para que no pierda mensajes al reiniciar
+          content-type: application/json
+          consumer:
+            concurrency: 1
+            max-attempts: 3
+      # 2. Configuración específica del Binder de Kafka
       kafka:
         binder:
           brokers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
-          required-acks: all
+          auto-create-topics: true
+          producer-properties:
+            acks: all
+            enable.idempotence: true
+          consumer-properties:
+            auto.offset.reset: earliest
         bindings:
-          triajeEventos-out-0:
+          eventTriageSupplier-out-0:
             producer:
               message-key-expression: headers['kafka_messageKey']
               configuration:
                 key.serializer: org.apache.kafka.common.serialization.StringSerializer
-                enable.idempotence: true
                 linger.ms: 5
                 client.id: triage-service
+
+logging:
+  level:
+    org.springframework.cloud.stream: DEBUG
+    org.springframework.kafka: INFO

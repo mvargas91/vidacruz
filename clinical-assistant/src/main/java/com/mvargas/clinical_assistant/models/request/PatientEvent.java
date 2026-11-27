@@ -1,22 +1,29 @@
 package com.mvargas.clinical_assistant.models.request;
 
-import com.mvargas.clinical_assistant.enums.EventType;
 import com.mvargas.clinical_assistant.enums.PatientStatus;
 
-import java.time.OffsetDateTime;
+import java.time.Instant;
 import java.util.UUID;
 
 public record PatientEvent (
-        String eventId,
-        EventType eventType,
+        UUID eventId,
+        String eventType,
+        Instant occurredAt,
         Long patientId,
-        PatientStatus previousState,
-        PatientStatus newStatus,
-        OffsetDateTime timestamp
+        String level,
+        Integer slaMinutes,
+        PatientStatus status
 ) {
-public static PatientEvent of(Long patientId, PatientStatus previousState,
-                               PatientStatus newStatus, EventType eventType) {
-    return new PatientEvent(UUID.randomUUID().toString(), eventType, patientId,
-            previousState, newStatus, OffsetDateTime.now());
+public static PatientEvent of(String eventType,
+                              Long patientId,
+                              String level,
+                              Integer slaMinutes,
+                              PatientStatus status) {
+    return new PatientEvent(
+            UUID.randomUUID(),
+            eventType,
+            Instant.now(),
+            patientId,
+            level, slaMinutes, status);
 }
 }

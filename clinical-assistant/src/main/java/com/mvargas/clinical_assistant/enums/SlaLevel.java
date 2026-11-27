@@ -2,6 +2,8 @@ package com.mvargas.clinical_assistant.enums;
 
 import lombok.Getter;
 
+import java.util.Arrays;
+
 @Getter
 public enum SlaLevel {
 
@@ -17,5 +19,13 @@ public enum SlaLevel {
     SlaLevel(String level, int minutes) {
         this.level = level;
         this.minutes = minutes;
+    }
+
+    public static int getMinutesByLevel(final String level) {
+        return Arrays.stream(values())
+                .filter(sla -> sla.level.equalsIgnoreCase(level.trim()))
+                .mapToInt(SlaLevel::getMinutes)
+                .findFirst()
+                .orElse(120);
     }
 }

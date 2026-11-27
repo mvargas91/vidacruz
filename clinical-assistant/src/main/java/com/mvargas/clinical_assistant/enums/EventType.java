@@ -18,6 +18,7 @@ public enum EventType {
             case REGISTRADO  -> PACIENTE_REGISTRADO;
             case EN_CONSULTA -> PACIENTE_EN_CONSULTA;
             case ALTA        -> PACIENTE_ALTA;
+            case ESCALADO    -> PACIENTE_ESCALADO;
         };
     }
 }

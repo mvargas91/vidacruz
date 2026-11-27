@@ -1,34 +1,37 @@
 package com.mvargas.clinical_assistant.components;
 
 import com.mvargas.clinical_assistant.models.request.PatientEvent;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Sinks;
 
-import java.time.Duration;
-
 @Component
+@RequiredArgsConstructor
 @Slf4j
 public class PatientEventPublisher {
 
+    private final Sinks.Many<Message<PatientEvent>> eventSink;
 
-    private final Sinks.Many<Message<PatientEvent>> sink;
+    public Mono<Void> publish(final PatientEvent patientEvent) {
 
-    public PatientEventPublisher(Sinks.Many<Message<PatientEvent>> sink) {
-        this.sink = sink;
-    }
+        log.info("Publish patientEvent");
 
-    public Mono<Void> publish(final PatientEvent event) {
         return Mono.fromRunnable(() -> {
-            Message<PatientEvent> message = MessageBuilder.withPayload(event)
-                    .setHeader("kafka_messageKey", String.valueOf(event.patientId()))
+
+            Message<PatientEvent> message = MessageBuilder.withPayload(patientEvent)
+                    .setHeader(KafkaHeaders.KEY, String.valueOf(patientEvent.patientId()))
                     .build();
 
-            sink.emitNext(message, Sinks.EmitFailureHandler.busyLooping(Duration.ofMillis(100)));
-            log.info("Evento {} encolado, paciente={}", event.eventType(), event.patientId());
+            Sinks.EmitResult result = this.eventSink.tryEmitNext(message);
+
+            if (result.isSuccess()) {
+                log.info("PatientEvent request sent successfully");
+            }
         });
     }
 }

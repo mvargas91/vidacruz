@@ -5,7 +5,7 @@ import com.mvargas.service_triage.enums.PatientStatus;
 import java.time.Instant;
 import java.util.UUID;
 
-public record PacienteRegistradoEvent(
+public record PatientEvent(
         UUID eventId,
         String eventType,
         Instant occurredAt,

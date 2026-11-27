@@ -21,7 +21,7 @@ public class EscalationRepository {
                        WHEN 'URGENTE_2'    THEN :urgente2
                        WHEN 'NO_URGENTE'   THEN :noUrgente
                        ELSE :noUrgente2 END) <= now()
-            RETURNING id, sla_level
+            RETURNING id, sla_level, patient_status
             """;
 
     private final DatabaseClient db;
@@ -41,7 +41,10 @@ public class EscalationRepository {
                 .bind("noUrgente",  seconds(SlaLevel.NO_URGENTE))
                 .bind("noUrgente2", seconds(SlaLevel.NO_URGENTE_2))
                 .map(row -> new EscalatedPatient(
-                        row.get("id", Long.class), row.get("sla_level", String.class)))
+                        row.get("id", Long.class),
+                        row.get("sla_level", String.class),
+                        row.get("patient_status", String.class))
+                )
                 .all();
     }
 

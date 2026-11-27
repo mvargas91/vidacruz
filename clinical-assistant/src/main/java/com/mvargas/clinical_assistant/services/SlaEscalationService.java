@@ -3,6 +3,7 @@ package com.mvargas.clinical_assistant.services;
 import com.mvargas.clinical_assistant.components.PatientEventPublisher;
 import com.mvargas.clinical_assistant.enums.EventType;
 import com.mvargas.clinical_assistant.enums.PatientStatus;
+import com.mvargas.clinical_assistant.enums.SlaLevel;
 import com.mvargas.clinical_assistant.models.entities.PatientAudit;
 import com.mvargas.clinical_assistant.models.request.EscalatedPatient;
 import com.mvargas.clinical_assistant.models.request.PatientEvent;
@@ -50,13 +51,17 @@ public class SlaEscalationService {
                 .collectList();
     }
 
-    private Mono<Void> publishEscalation(final EscalatedPatient p) {
-        meterRegistry.counter("triage.escalamientos", "nivel", p.slaLevel()).increment();
+    private Mono<Void> publishEscalation(final EscalatedPatient patient) {
+        meterRegistry.counter("triage.escalamientos", "nivel", patient.slaLevel()).increment();
         return patientEventPublisher
-                .publish(PatientEvent.of(p.id(), PatientStatus.REGISTRADO,
-                        PatientStatus.REGISTRADO, EventType.PACIENTE_ESCALADO))
+                .publish(PatientEvent.of(
+                        EventType.PACIENTE_ESCALADO.getValor(),
+                        patient.id(),
+                        patient.slaLevel(),
+                        SlaLevel.getMinutesByLevel(patient.slaLevel()),
+                        PatientStatus.fromString(patient.patientStatus())))
                 .onErrorResume(e -> {
-                    log.error("Could not publish patient_escalated id: {}", p.id(), e);
+                    log.error("Could not publish patient_escalated id: {}", patient.id(), e);
                     return Mono.empty();
                 });
     }
