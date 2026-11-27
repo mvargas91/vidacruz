@@ -43,7 +43,7 @@ spring:
 
   cloud:
     function:
-      definition: eventTriageSupplier;eventTriageConsumer
+      definition: eventTriageSupplier;eventTriageConsumer;eventAlertConsumer
     stream:
       # 1. Bindings generales (Aquí se mapea al topic real)
       bindings:
@@ -52,7 +52,14 @@ spring:
           content-type: application/json
         eventTriageConsumer-in-0:
           destination: triaje.eventos
-          group: grupo-triaje # Obligatorio para que no pierda mensajes al reiniciar
+          group: group-emergency-status # Obligatorio para que no pierda mensajes al reiniciar
+          content-type: application/json
+          consumer:
+            concurrency: 1
+            max-attempts: 3
+        eventAlertConsumer-in-0:
+          destination: triaje.eventos
+          group: group-alert-scaled # Obligatorio para que no pierda mensajes al reiniciar
           content-type: application/json
           consumer:
             concurrency: 1
