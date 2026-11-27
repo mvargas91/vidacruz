@@ -1,7 +1,7 @@
 package com.mvargas.service_triage.outbox;
 
-import com.mvargas.service_triage.enums.OutboxStatus;
-import com.mvargas.service_triage.models.entities.OutboxEvent;
+import com.mvargas.enums.OutboxStatus;
+import com.mvargas.models.entities.OutboxEvent;
 import com.mvargas.service_triage.repositories.OutboxRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

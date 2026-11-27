@@ -1,6 +1,6 @@
 package com.mvargas.clinical_assistant.configurations;
 
-import com.mvargas.clinical_assistant.enums.SlaLevel;
+import com.mvargas.enums.SlaLevel;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.time.Duration;

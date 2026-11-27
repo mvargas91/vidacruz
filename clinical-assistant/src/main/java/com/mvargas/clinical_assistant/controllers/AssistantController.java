@@ -1,6 +1,6 @@
 package com.mvargas.clinical_assistant.controllers;
 
-import com.mvargas.clinical_assistant.models.response.EmergencyStatusRs;
+import com.mvargas.models.response.EmergencyStatusRs;
 import com.mvargas.clinical_assistant.services.AssistantService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

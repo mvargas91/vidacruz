@@ -1,17 +1,17 @@
 package com.mvargas.clinical_assistant.services;
 
 import com.mvargas.clinical_assistant.components.PatientEventPublisher;
-import com.mvargas.clinical_assistant.enums.EventType;
-import com.mvargas.clinical_assistant.enums.PatientStatus;
+import com.mvargas.enums.EventType;
+import com.mvargas.enums.PatientStatus;
 import com.mvargas.clinical_assistant.exceptions.PatientAlreadyExistsException;
 import com.mvargas.clinical_assistant.exceptions.PatientNotFoundException;
 import com.mvargas.clinical_assistant.exceptions.PatientServiceException;
 import com.mvargas.clinical_assistant.exceptions.PatientStatusConflictException;
 import com.mvargas.clinical_assistant.mappers.PatientMapper;
-import com.mvargas.clinical_assistant.models.entities.Patient;
-import com.mvargas.clinical_assistant.models.entities.PatientAudit;
-import com.mvargas.clinical_assistant.models.request.PatientEvent;
-import com.mvargas.clinical_assistant.models.response.PatientRs;
+import com.mvargas.models.entities.Patient;
+import com.mvargas.models.entities.PatientAudit;
+import com.mvargas.models.request.PatientEvent;
+import com.mvargas.models.response.PatientRs;
 import com.mvargas.clinical_assistant.repositories.PatientAuditRepository;
 import com.mvargas.clinical_assistant.repositories.PatientRepository;
 import lombok.AllArgsConstructor;

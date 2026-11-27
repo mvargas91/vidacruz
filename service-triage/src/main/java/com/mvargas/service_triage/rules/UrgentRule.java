@@ -1,7 +1,7 @@
 package com.mvargas.service_triage.rules;
 
-import com.mvargas.service_triage.enums.SlaLevel;
-import com.mvargas.service_triage.models.request.PatientRq;
+import com.mvargas.enums.SlaLevel;
+import com.mvargas.models.request.PatientRq;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 

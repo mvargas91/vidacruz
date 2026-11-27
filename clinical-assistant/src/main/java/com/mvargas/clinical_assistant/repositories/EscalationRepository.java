@@ -1,8 +1,8 @@
 package com.mvargas.clinical_assistant.repositories;
 
 import com.mvargas.clinical_assistant.components.SlaPolicy;
-import com.mvargas.clinical_assistant.enums.SlaLevel;
-import com.mvargas.clinical_assistant.models.request.EscalatedPatient;
+import com.mvargas.enums.SlaLevel;
+import com.mvargas.models.request.EscalatedPatient;
 import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;

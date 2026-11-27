@@ -1,8 +1,8 @@
 package com.mvargas.clinical_assistant.mappers;
 
-import com.mvargas.clinical_assistant.models.entities.Patient;
-import com.mvargas.clinical_assistant.models.request.PatientRq;
-import com.mvargas.clinical_assistant.models.response.PatientRs;
+import com.mvargas.models.entities.Patient;
+import com.mvargas.models.request.PatientRq;
+import com.mvargas.models.response.PatientRs;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

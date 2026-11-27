@@ -1,7 +1,6 @@
 package com.mvargas.clinical_assistant.repositories;
 
-import com.mvargas.clinical_assistant.enums.NivelTriaje;
-import com.mvargas.clinical_assistant.enums.SlaLevel;
+import com.mvargas.enums.NivelTriaje;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.ReactiveStringRedisTemplate;

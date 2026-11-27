@@ -1,8 +1,8 @@
 package com.mvargas.clinical_assistant.services;
 
-import com.mvargas.clinical_assistant.enums.NivelTriaje;
-import com.mvargas.clinical_assistant.models.response.EmergencyStatusRs;
-import com.mvargas.clinical_assistant.models.response.TriageEvent;
+import com.mvargas.enums.NivelTriaje;
+import com.mvargas.models.response.EmergencyStatusRs;
+import com.mvargas.models.response.TriageEvent;
 import com.mvargas.clinical_assistant.repositories.EmergencyViewRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

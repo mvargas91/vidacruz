@@ -1,6 +1,6 @@
 package com.mvargas.service_triage.controllers;
 
-import com.mvargas.service_triage.models.response.HourlyOperationReportRs;
+import com.mvargas.models.response.HourlyOperationReportRs;
 import com.mvargas.service_triage.services.ReportService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;

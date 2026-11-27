@@ -1,9 +1,9 @@
 package com.mvargas.clinical_assistant.controllers;
 
-import com.mvargas.clinical_assistant.enums.PatientStatus;
-import com.mvargas.clinical_assistant.models.entities.Patient;
-import com.mvargas.clinical_assistant.models.request.PatientStatusRq;
-import com.mvargas.clinical_assistant.models.response.PatientRs;
+import com.mvargas.enums.PatientStatus;
+import com.mvargas.models.entities.Patient;
+import com.mvargas.models.request.PatientStatusRq;
+import com.mvargas.models.response.PatientRs;
 import com.mvargas.clinical_assistant.services.PatientService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

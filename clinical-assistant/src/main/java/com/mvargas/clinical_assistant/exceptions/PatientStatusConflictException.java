@@ -1,6 +1,6 @@
 package com.mvargas.clinical_assistant.exceptions;
 
-import com.mvargas.clinical_assistant.enums.PatientStatus;
+import com.mvargas.enums.PatientStatus;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 

@@ -1,7 +1,7 @@
 package com.mvargas.clinical_assistant.components;
 
 import com.mvargas.clinical_assistant.configurations.TriageProperties;
-import com.mvargas.clinical_assistant.enums.SlaLevel;
+import com.mvargas.enums.SlaLevel;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;

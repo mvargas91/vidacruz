@@ -83,6 +83,12 @@ spring:
                 linger.ms: 5
                 client.id: triage-service
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics
+
 logging:
   level:
     org.springframework.cloud.stream: DEBUG

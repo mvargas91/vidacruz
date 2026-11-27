@@ -1,6 +1,6 @@
 package com.mvargas.service_triage.services;
 
-import com.mvargas.service_triage.models.response.HourlyOperationReportRs;
+import com.mvargas.models.response.HourlyOperationReportRs;
 import com.mvargas.service_triage.repositories.ReportRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -1,11 +1,12 @@
 package com.mvargas.service_triage.services;
 
-import com.mvargas.service_triage.enums.PatientStatus;
+import com.mvargas.enums.PatientStatus;
+import com.mvargas.models.response.PatientRegisterRs;
 import com.mvargas.service_triage.mappers.PatientMapper;
-import com.mvargas.service_triage.models.entities.Patient;
-import com.mvargas.service_triage.models.request.PatientEvent;
-import com.mvargas.service_triage.models.request.PatientRq;
-import com.mvargas.service_triage.models.response.PatientRs;
+import com.mvargas.models.entities.Patient;
+import com.mvargas.models.request.PatientEvent;
+import com.mvargas.models.request.PatientRq;
+import com.mvargas.models.response.PatientRs;
 import com.mvargas.service_triage.outbox.OutboxService;
 import com.mvargas.service_triage.repositories.PatientRepository;
 import io.r2dbc.spi.R2dbcException;
@@ -34,7 +35,7 @@ public class TriageService {
     private final SlaLevelService slaLevel;
     private final OutboxService outboxService;
 
-    public Mono<PatientRs> addPatientInformation(final PatientRq request){
+    public Mono<PatientRegisterRs> addPatientInformation(final PatientRq request){
         log.info("add information of the patient");
         return Mono.fromSupplier(() -> {
                     Patient patient = mapper.toEntity(request);

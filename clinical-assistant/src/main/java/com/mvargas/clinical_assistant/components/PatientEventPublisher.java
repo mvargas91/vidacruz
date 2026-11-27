@@ -1,6 +1,6 @@
 package com.mvargas.clinical_assistant.components;
 
-import com.mvargas.clinical_assistant.models.request.PatientEvent;
+import com.mvargas.models.request.PatientEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.support.KafkaHeaders;

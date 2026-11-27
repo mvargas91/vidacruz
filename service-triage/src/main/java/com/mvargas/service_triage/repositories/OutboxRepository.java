@@ -1,6 +1,6 @@
 package com.mvargas.service_triage.repositories;
 
-import com.mvargas.service_triage.models.entities.OutboxEvent;
+import com.mvargas.models.entities.OutboxEvent;
 import org.springframework.data.r2dbc.repository.Modifying;
 import org.springframework.data.r2dbc.repository.Query;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;

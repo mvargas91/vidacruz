@@ -1,14 +1,13 @@
 package com.mvargas.clinical_assistant.services;
 
 import com.mvargas.clinical_assistant.components.PatientEventPublisher;
-import com.mvargas.clinical_assistant.enums.EventType;
-import com.mvargas.clinical_assistant.enums.PatientStatus;
-import com.mvargas.clinical_assistant.enums.SlaLevel;
-import com.mvargas.clinical_assistant.models.entities.PatientAudit;
-import com.mvargas.clinical_assistant.models.request.EscalatedPatient;
-import com.mvargas.clinical_assistant.models.request.PatientEvent;
 import com.mvargas.clinical_assistant.repositories.EscalationRepository;
 import com.mvargas.clinical_assistant.repositories.PatientAuditRepository;
+import com.mvargas.enums.PatientStatus;
+import com.mvargas.enums.SlaLevel;
+import com.mvargas.models.entities.PatientAudit;
+import com.mvargas.models.request.EscalatedPatient;
+import com.mvargas.models.request.PatientEvent;
 import io.micrometer.core.instrument.MeterRegistry;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +17,8 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
+
+import static com.mvargas.enums.EventType.PACIENTE_ESCALADO;
 
 @Service
 @AllArgsConstructor
@@ -44,7 +45,7 @@ public class SlaEscalationService {
                                 .patientId(p.id())
                                 .newStatus(PatientStatus.REGISTRADO.name())
                                 .previousState(PatientStatus.REGISTRADO.name())
-                                .eventType(EventType.PACIENTE_ESCALADO)
+                                .eventType(PACIENTE_ESCALADO)
                                 .build()
                         )
                         .thenReturn(p))
@@ -55,7 +56,7 @@ public class SlaEscalationService {
         meterRegistry.counter("triage.escalamientos", "nivel", patient.slaLevel()).increment();
         return patientEventPublisher
                 .publish(PatientEvent.of(
-                        EventType.PACIENTE_ESCALADO.getValor(),
+                        PACIENTE_ESCALADO.getValor(),
                         patient.id(),
                         patient.slaLevel(),
                         SlaLevel.getMinutesByLevel(patient.slaLevel()),

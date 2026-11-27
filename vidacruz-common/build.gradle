@@ -1,0 +1,42 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish' // Permite publicarla localmente con 'gradle publishToMavenLocal'
+}
+
+group = 'com.mvargas'
+version = '1.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Versiones parcheadas (corrigen CVE-2026-41721 y vulnerabilidades de QBE)
+    api 'org.springframework.data:spring-data-relational:4.2.0'
+    api 'org.springframework.data:spring-data-commons:4.2.0'
+
+    // Validaciones (@NotNull, @NotBlank, etc.)
+    api 'jakarta.validation:jakarta.validation-api:3.1.1'
+
+    // Jackson para eventos de Kafka
+    api 'com.fasterxml.jackson.core:jackson-annotations:2.18.2'
+
+    // Lombok con soporte oficial para Java 25 (soporte introducido desde 1.18.40+)
+    compileOnly 'org.projectlombok:lombok:1.18.48'
+    annotationProcessor 'org.projectlombok:lombok:1.18.48'
+}
+
+// Configura la publicación en tu repositorio local (~/.m2)
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}

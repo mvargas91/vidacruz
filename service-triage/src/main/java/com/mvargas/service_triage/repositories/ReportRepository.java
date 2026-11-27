@@ -1,6 +1,6 @@
 package com.mvargas.service_triage.repositories;
 
-import com.mvargas.service_triage.models.response.HourlyOperationReportRs;
+import com.mvargas.models.response.HourlyOperationReportRs;
 import lombok.RequiredArgsConstructor;
 import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.stereotype.Repository;

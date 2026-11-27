@@ -1,6 +1,6 @@
 package com.mvargas.clinical_assistant.configurations;
 
-import com.mvargas.clinical_assistant.models.request.PatientEvent;
+import com.mvargas.models.request.PatientEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

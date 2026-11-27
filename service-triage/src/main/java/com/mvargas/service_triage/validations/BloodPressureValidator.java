@@ -1,6 +1,6 @@
 package com.mvargas.service_triage.validations;
 
-import com.mvargas.service_triage.models.request.PatientRq;
+import com.mvargas.models.request.PatientRq;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
