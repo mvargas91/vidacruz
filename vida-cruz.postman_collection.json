@@ -1,0 +1,304 @@
+{
+  "info": {
+    "_postman_id": "712022d5-ef5d-4a0d-a9b3-572f8b47ca30",
+    "name": "vida-cruz",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57170200",
+    "_collection_link": "https://go.postman.co/collection/57170200-712022d5-ef5d-4a0d-a9b3-572f8b47ca30?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "register patient 1",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\t\"fullName\": \"Carlos Andrés Ramírez Gómez\",\r\n\t\t\"age\": 45,\r\n\t\t\"heartRate\": 130,\r\n\t\t\"systolicPressure\": 180,\r\n\t\t\"diastolicPressure\": 110,\r\n\t\t\"spOTwo\": 97,\r\n\t\t\"temperature\": 36.8,\r\n\t\t\"ache\": 8,\r\n\t\t\"gcs\": 15,\r\n\t\t\"description\": \"Dolor torácico\"\r\n\t}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/triage/pacientes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "triage",
+            "pacientes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "register patient 2",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\t\"fullName\": \"Juan Camilo Rodriguez\",\r\n\t\t\"age\": 30,\r\n\t\t\"heartRate\": 95,\r\n\t\t\"systolicPressure\": 150,\r\n\t\t\"diastolicPressure\": 95,\r\n\t\t\"spOTwo\": 91,\r\n\t\t\"temperature\": 37.0,\r\n\t\t\"ache\": 4,\r\n\t\t\"gcs\": 15,\r\n\t\t\"description\": \"Dificultad para respirar\"\r\n\t}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/triage/pacientes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "triage",
+            "pacientes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "register patient 3",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\t\"fullName\": \"Lina maria Gómez\",\r\n\t\t\"age\": 25,\r\n\t\t\"heartRate\": 88,\r\n\t\t\"systolicPressure\": 130,\r\n\t\t\"diastolicPressure\": 85,\r\n\t\t\"spOTwo\": 98,\r\n\t\t\"temperature\": 38.2,\r\n\t\t\"ache\": 6,\r\n\t\t\"gcs\": 15,\r\n\t\t\"description\": \"Fiebre\"\r\n\t}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/triage/pacientes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "triage",
+            "pacientes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "register patient 4",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\t\"fullName\": \"Ana Ramírez Gómez\",\r\n\t\t\"age\": 18,\r\n\t\t\"heartRate\": 72,\r\n\t\t\"systolicPressure\": 120,\r\n\t\t\"diastolicPressure\": 80,\r\n\t\t\"spOTwo\": 99,\r\n\t\t\"temperature\": 36.5,\r\n\t\t\"ache\": 2,\r\n\t\t\"gcs\": 15,\r\n\t\t\"description\": \"Herida por cortar\"\r\n\t}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/triage/pacientes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "triage",
+            "pacientes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "register patient 5",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\t\"fullName\": \"Daniel Arango Restrepo\",\r\n\t\t\"age\": 36,\r\n\t\t\"heartRate\": 70,\r\n\t\t\"systolicPressure\": 115,\r\n\t\t\"diastolicPressure\": 75,\r\n\t\t\"spOTwo\": 99,\r\n\t\t\"temperature\": 36.4,\r\n\t\t\"ache\": 0,\r\n\t\t\"gcs\": 15,\r\n\t\t\"description\": \"Renovación de recetario\"\r\n\t}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/triage/pacientes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "triage",
+            "pacientes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "register patient 6",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\t\"fullName\": \"Luisa Fernanda Diaz\",\r\n\t\t\"age\": 31,\r\n\t\t\"heartRate\": 35,\r\n\t\t\"systolicPressure\": 80,\r\n\t\t\"diastolicPressure\": 50,\r\n\t\t\"spOTwo\": 85,\r\n\t\t\"temperature\": 35.9,\r\n\t\t\"ache\": 0,\r\n\t\t\"gcs\": 6,\r\n\t\t\"description\": \"Inconsciente\"\r\n\t}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/triage/pacientes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "triage",
+            "pacientes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get patient",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:9090/triage/pacientes/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9090",
+          "path": [
+            "triage",
+            "pacientes",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "chage status",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"status\": \"EN_CONSULTA\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:9090/triage/pacientes/2/estado",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9090",
+          "path": [
+            "triage",
+            "pacientes",
+            "2",
+            "estado"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "emergency-status",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-Key",
+            "value": "123456789"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "localhost:9090/asistente/estado-urgencias",
+          "host": [
+            "localhost"
+          ],
+          "port": "9090",
+          "path": [
+            "asistente",
+            "estado-urgencias"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "transaction reports",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-Key",
+            "value": "123456789"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "localhost:8080/triage/reportes/operacion?desde=2026-11-27T00:00:00-05:00&hasta=2026-11-28T00:00:00-05:00",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "triage",
+            "reportes",
+            "operacion"
+          ],
+          "query": [
+            {
+              "key": "desde",
+              "value": "2026-11-27T00:00:00-05:00"
+            },
+            {
+              "key": "hasta",
+              "value": "2026-11-28T00:00:00-05:00"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

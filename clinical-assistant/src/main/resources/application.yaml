@@ -1,6 +1,3 @@
-server:
-  port: 9090
-
 # RF-03: sla and interval are configurable : PT30S, PT2S
 app:
   triage:
